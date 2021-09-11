@@ -1,16 +1,16 @@
 <ion-content>
   <div id="container">
     <img src="../../assets/banner.png" alt="Banner TicTacToe">
-    <ion-input style="font-size: 20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" type="text" placeholder="Informe seu nick" clearInput [(ngModel)]="nickname"></ion-input>
+    <ion-input mode="ios" style="font-size: 20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" type="text" placeholder="Informe seu nick" clearInput [(ngModel)]="nickname"></ion-input>
     <ion-grid fixed>
       <ion-row>
         <ion-col size="6">
-          <ion-button (click)="onClick()" expand="block" color="danger" [disabled]="nickname === ''">
+          <ion-button (click)="startSolo()" mode="ios" expand="block" color="danger" [disabled]="nickname === ''">
             Partida Solo <span class="blinker">_</span>
           </ion-button>
         </ion-col>
         <ion-col size="6">
-          <ion-button (click)="onClick()" expand="block" color="danger" fill="outline" [disabled]="nickname === ''">
+          <ion-button (click)="onClick()" mode="ios" expand="block" color="danger" fill="outline" [disabled]="nickname === ''">
             Multiplayer
           </ion-button>
         </ion-col>

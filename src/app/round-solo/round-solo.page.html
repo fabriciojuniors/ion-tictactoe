@@ -1,0 +1,26 @@
+<ion-content>
+  <div class="player-name">
+    <p><strong>Player 1: </strong>{{round.player1}}</p>
+    <p><strong>Player 2: </strong>{{round.player2}}</p>
+  </div>
+  <div class="status" *ngIf="!round.gameOver">
+    <strong>{{round.statusRound.descricao}}</strong>
+  </div>
+  <div class="status" *ngIf="round.gameOver">
+    <p><strong> GameOver </strong></p>
+    <p *ngIf="round.winner">O melhor foi {{round.winner}}</p>
+    <p *ngIf="!round.winner">Deu velha!</p>
+  </div><br> <br>
+  <div id="container">
+    <table class="board">
+      <tbody>
+        <tr *ngFor="let linha of round.board; let i = index">
+          <td *ngFor="let coluna of linha; let j = index" [ngStyle]="{'color': coluna == 'x' ? 'red' : 'blue'}" (click)="play(i, j)">{{coluna}}</td>
+        </tr> 
+      </tbody>
+    </table>
+    <ion-button (click)="presentAlertConfirm()" color="danger" mode="ios" expand="block" shape="round">
+      Abandonar partida
+    </ion-button>
+  </div>
+</ion-content>

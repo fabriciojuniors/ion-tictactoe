@@ -1,0 +1,63 @@
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+.board{
+    text-align: center;
+    font-size: 75px;
+    width: 90%;
+    margin: 20px;
+    margin-bottom: 70px;
+}
+
+.board tr:nth-child(2){
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+}
+
+.board td:nth-child(2), .board td:nth-child(4), .board td:nth-child(7){
+    border-right: 0.5px solid gray;
+    border-left: 0.5px solid gray;
+}
+
+.player-name, .status{
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.status{
+    margin-top: 100px;
+}
+
+.player-name p{
+    margin: 0px;
+    padding: 0px;
+}
+
+.player-name strong{
+    color: red;
+}

@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'round-solo',
+    loadChildren: () => import('./round-solo/round-solo.module').then( m => m.RoundSoloPageModule)
+  },
 ];
 
 @NgModule({
