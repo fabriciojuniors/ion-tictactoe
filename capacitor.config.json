@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "ion-tictactoe",
+	"appId": "ion.tictactoe",
+	"appName": "Ion TicTacToe",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

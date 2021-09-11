@@ -25,3 +25,13 @@
 #container a {
   text-decoration: none;
 }
+
+.blinker {
+  animation: blinker 1s infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
