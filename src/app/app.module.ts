@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-export const BASEURL = "http://ion-tictactoe.herokuapp.com";
+export const BASEURL = "https://ion-tictactoe.herokuapp.com";
 //export const BASEURL = "localhost:8080";
 @NgModule({
   declarations: [AppComponent],
