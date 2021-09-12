@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { RoundService } from '../services/round.service';
-
+const TIPO_SOLO = "SOLO";
+const STATUS_EM_ANDAMENTO = "EA";
 @Component({
   selector: 'app-round-solo',
   templateUrl: './round-solo.page.html',
@@ -45,6 +46,7 @@ export class RoundSoloPage implements OnInit {
     private service: RoundService,
     private toastController: ToastController,
     private alertController : AlertController,
+    private loadingController : LoadingController,
     private router: Router) { }
 
   async presentToast(msg) {
@@ -59,7 +61,7 @@ export class RoundSoloPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Atenção!',
-      message: 'Você irá sair da partida e nã será possível retornar à mesma sala.',
+      message: 'Você irá sair da partida e não será possível retornar à mesma sala.',
       buttons: [
         {
           text: 'Cancelar',
@@ -80,13 +82,45 @@ export class RoundSoloPage implements OnInit {
     await alert.present();
   }
 
+  async presentLoading(message) {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: message
+    });
+    await loading.present();
+  }
+
+  dismissLoading(){
+    this.loadingController.dismiss();
+  }
+
+  async novaPartida(){
+    await this.presentLoading("Iniciando a partida...");
+    let dados = {
+      player1: this.round.player1,
+      tipoPartida: TIPO_SOLO,
+      statusRound: STATUS_EM_ANDAMENTO
+    }
+
+    this.service.startSolo(dados).toPromise()
+      .then(res => {
+        this.round = res;        
+        this.dismissLoading();
+        this.router.navigate(["/round-solo"], {queryParams: {id: res.id}});
+      })
+      .catch(err => {
+        console.error(err);  
+        this.presentToast(err.message)
+        this.dismissLoading();
+      })
+    
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.roundId = params.id
       this.service.getById(this.roundId).toPromise()
         .then(res => {
-          console.log(res);
           this.round = res;
          })
         .catch(err => {
@@ -108,7 +142,7 @@ export class RoundSoloPage implements OnInit {
   }
 
   play(linha, coluna) {
-    if (this.round.board[linha][coluna] != '-') {
+    if (this.round.board[linha][coluna] != '') {
       console.log("Movimento inválido");
       return;
     }
@@ -126,24 +160,16 @@ export class RoundSoloPage implements OnInit {
       codigo: this.round.codigo,
       gameOver: this.round.gameOver
     }
-    console.log(newRound);
-    
 
     this.service.update(newRound).toPromise()
       .then(res => {
-        this.round = res
-        console.log("---------");
-        
-        console.log(this.round);
-        console.log("---");
-        
-        
+        this.round = res;
       })
       .catch(err => {
         console.log(err);
 
       })
-
+      
   }
 
 }

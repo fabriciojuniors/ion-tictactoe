@@ -1,16 +1,24 @@
 <ion-content>
-  <div class="player-name">
-    <p><strong>Player 1: </strong>{{round.player1}}</p>
-    <p><strong>Player 2: </strong>{{round.player2}}</p>
-  </div>
-  <div class="status" *ngIf="!round.gameOver">
-    <strong>{{round.statusRound.descricao}}</strong>
-  </div>
-  <div class="status" *ngIf="round.gameOver">
-    <p><strong> GameOver </strong></p>
-    <p *ngIf="round.winner">O melhor foi {{round.winner}}</p>
-    <p *ngIf="!round.winner">Deu velha!</p>
-  </div><br> <br>
+  <ion-row class="player-name">
+    <ion-col size="12">
+      <p><strong>Player 1: </strong>{{round.player1}}</p>
+      <p><strong>Player 2: </strong>{{round.player2}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="status" size="12">
+      <strong *ngIf="!round.gameOver">{{round.statusRound.descricao}}</strong>
+    </ion-col>
+    <ion-col class="status" size="12">
+      <div *ngIf="round.gameOver">
+        <span>
+          <strong> GameOver </strong>
+          <p *ngIf="round.winner">O melhor foi {{round.winner}}</p>
+          <p *ngIf="!round.winner">Deu velha!</p>
+        </span>
+      </div>
+    </ion-col>
+  </ion-row>
   <div id="container">
     <table class="board">
       <tbody>
@@ -19,8 +27,17 @@
         </tr> 
       </tbody>
     </table>
-    <ion-button (click)="presentAlertConfirm()" color="danger" mode="ios" expand="block" shape="round">
-      Abandonar partida
-    </ion-button>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button [disabled]="round.gameOver" (click)="presentAlertConfirm()" color="danger" mode="ios" expand="block">
+          Abandonar partida
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button [disabled]="!round.gameOver" (click)="novaPartida()" color="danger" mode="ios" fill="outline" expand="block">
+          Nova partida
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

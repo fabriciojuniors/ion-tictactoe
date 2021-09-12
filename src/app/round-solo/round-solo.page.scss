@@ -42,15 +42,15 @@
     border-left: 0.5px solid gray;
 }
 
+td{
+    width: 33rem;
+    height: 1.3em;
+}
+
 .player-name, .status{
     font-size: 20px;
     width: 100%;
     text-align: center;
-    margin-top: 25px;
-}
-
-.status{
-    margin-top: 100px;
 }
 
 .player-name p{
