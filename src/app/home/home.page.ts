@@ -60,4 +60,8 @@ export class HomePage {
     
   }
 
+  startMultiplayer(){
+    this.router.navigate(["/selecao-sala"], {queryParams: {nickname: this.nickname}})
+  }
+
 }

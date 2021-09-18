@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Entrar na partida</ion-card-title>
+      <ion-card-subtitle>Informe o número da sala</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input type="number" placeholder="Nº Sala" [(ngModel)]="codSala"></ion-input>
+      <ion-button (click)="entrar()" color="danger" [disabled]="codSala === ''" expand="block" mode="ios">
+        Entrar na sala
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Nova partida</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="iniciar()" color="danger" expand="block" fill="outline" mode="ios">
+        Iniciar partida
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

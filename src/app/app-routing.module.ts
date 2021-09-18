@@ -15,6 +15,18 @@ const routes: Routes = [
     path: 'round-solo',
     loadChildren: () => import('./round-solo/round-solo.module').then( m => m.RoundSoloPageModule)
   },
+  {
+    path: 'selecao-sala',
+    loadChildren: () => import('./selecao-sala/selecao-sala.module').then( m => m.SelecaoSalaPageModule)
+  },
+  {
+    path: 'lobby',
+    loadChildren: () => import('./lobby/lobby.module').then( m => m.LobbyPageModule)
+  },
+  {
+    path: 'round-multiplayer',
+    loadChildren: () => import('./round-multiplayer/round-multiplayer.module').then( m => m.RoundMultiplayerPageModule)
+  },
 ];
 
 @NgModule({

@@ -18,6 +18,7 @@ export class RoundSoloPage implements OnInit {
       descricao: ""
     },
     winner: null,
+    next: null,
     board: [
       [
         "",
@@ -158,7 +159,8 @@ export class RoundSoloPage implements OnInit {
       board: newBoard,
       tipoPartida: "SOLO",
       codigo: this.round.codigo,
-      gameOver: this.round.gameOver
+      gameOver: this.round.gameOver,
+      next: this.round.next
     }
 
     this.service.update(newRound).toPromise()

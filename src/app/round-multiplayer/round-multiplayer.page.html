@@ -26,14 +26,14 @@
       </tbody>
     </table>
     <ion-row>
-      <ion-col size="6">
+      <ion-col size="12">
         <ion-button [disabled]="round.gameOver" (click)="presentAlertConfirm()" color="danger" mode="ios" expand="block">
           Abandonar partida
         </ion-button>
       </ion-col>
-      <ion-col size="6">
-        <ion-button [disabled]="!round.gameOver" (click)="novaPartida()" color="danger" mode="ios" fill="outline" expand="block">
-          Nova partida
+      <ion-col size="12">
+        <ion-button [disabled]="!round.gameOver" (click)="sair()" fill="outline" color="danger" mode="ios" expand="block">
+          Sair
         </ion-button>
       </ion-col>
     </ion-row>
