@@ -1,12 +1,12 @@
 <ion-content>
-  <ion-card>
+  <ion-card mode="ios">
     <ion-card-header>
       <ion-card-title>Dados da partida</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p><strong>Player 1: </strong>{{round.player1}}</p>
-      <p><strong>Player 2: </strong>{{round.player2}}</p>
-      <p><strong>Status: </strong>{{round.statusRound.descricao}}</p>
+      <p *ngIf="!round.gameOver"><strong>Player 1: </strong>{{round.player1}}</p>
+      <p *ngIf="!round.gameOver"><strong>Player 2: </strong>{{round.player2}}</p>
+      <p *ngIf="!round.gameOver"><strong>Status: </strong>{{round.statusRound.descricao}}</p>
       <p *ngIf="!round.gameOver"><strong>Próximo a jogar:</strong> {{round.next}}</p>      
       <div *ngIf="round.gameOver">
         <span>

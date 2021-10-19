@@ -83,6 +83,8 @@ export class RoundMultiplayerPage implements OnInit {
       codigo: 0,
       gameOver: false
     };
+    this.roundid = 0;
+    this.nickname ="";
     this.route.queryParams.subscribe(params => {
       this.roundid = params.id;
       this.nickname = params.nickname;
